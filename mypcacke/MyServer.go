@@ -14,6 +14,8 @@ func main() {
 	http.HandleFunc("/price", data.price)
 	http.ListenAndServe("localhost:8000", nil)
 
+	fmt.Println("test rebase++")
+
 }
 
 func startServer(addr string, h http.Handler) {
