@@ -6,22 +6,22 @@ import (
 )
 
 func main() {
-	var items = []*Book{{"Live",23},{"Earth",30}}
+	var items = []*Book{{"Live", 23}, {"Earth", 30}}
 	data := database{item: items}
 	//startServer("localhost:8000",&data)
 
-	http.HandleFunc("/list",data.list)
-	http.HandleFunc("/price",data.price)
-	http.ListenAndServe("localhost:8000",nil)
+	http.HandleFunc("/list", data.list)
+	http.HandleFunc("/price", data.price)
+	http.ListenAndServe("localhost:8000", nil)
 
 }
 
-func startServer(addr string,h http.Handler){
-	http.ListenAndServe(addr,h)
+func startServer(addr string, h http.Handler) {
+	http.ListenAndServe(addr, h)
 }
 
 type Book struct {
-	name string
+	name  string
 	price float32
 }
 
@@ -30,7 +30,7 @@ type database struct {
 }
 
 func (d *database) ServeHTTP(writer http.ResponseWriter, request *http.Request) {
-	for _,it := range d.item {
+	for _, it := range d.item {
 		fmt.Fprintf(writer, "%s: %s\n", it.price, it.name)
 	}
 }
@@ -52,7 +52,6 @@ func (db database) price(w http.ResponseWriter, req *http.Request) {
 	//fmt.Fprintf(w, "%s\n", price)
 }
 
+func mm() {
 
-
-
-
+}
