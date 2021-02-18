@@ -17,6 +17,7 @@ func main() {
 }
 
 func startServer(addr string, h http.Handler) {
+	fmt.Println("2021")
 	http.ListenAndServe(addr, h)
 }
 
