@@ -1,7 +1,6 @@
 package main
 
 import (
-	newname "awesomeProject/mypcacke"
 	"bufio"
 	"encoding/json"
 	"fmt"
@@ -21,7 +20,6 @@ import (
 	"time"
 )
 
-
 type Circle int32
 type Cube int32
 
@@ -29,15 +27,14 @@ var myVar int32
 var myBo bool = true
 
 var (
-	aa int32
-	bb bool
+	aa    int32
+	bb    bool
 	com64 complex64
 )
 
 const (
 	MyCircle Circle = 1
-	MyCube Cube = 2
-
+	MyCube   Cube   = 2
 )
 const GoUsage = `Go is a tool for managing Go source code.
 
@@ -50,6 +47,16 @@ sad
 `
 
 func main() {
+	fmt.Println("start connect mysql")
+	//db,_:=sql.Open("mysql","root:root@(127.0.0.1:3306)/golang")
+	//
+	//err :=db.Ping()
+	//if err != nil{
+	//	fmt.Println("数据库链接失败")
+	//}
+
+	fmt.Println("start connect mysql")
+
 	fmt.Println("-------------------------------------")
 	var b int
 	b = 7
@@ -120,7 +127,7 @@ func main() {
 	fmt.Println(sum)
 
 	mymap := map[string][]string{"111": {"1233,123"}}
-	mi := []string{"asd","aaaa"}
+	mi := []string{"asd", "aaaa"}
 	mymap["asd"] = mi
 	fmt.Println(mymap["111"])
 	delete(mymap, "111")
@@ -130,7 +137,6 @@ func main() {
 	}
 
 	fmt.Println(os.Args[2])
-	newname.Woc()
 	ch := make(chan string)
 	for _, url := range os.Args[1:] {
 		go pNums(url, ch) // start a goroutine
@@ -143,8 +149,8 @@ func main() {
 
 	fmt.Println(sad)
 
-	sliceInt := []int{1,2,3,4}
-	sliceInt = append(sliceInt[:],1,2)
+	sliceInt := []int{1, 2, 3, 4}
+	sliceInt = append(sliceInt[:], 1, 2)
 	reversSlice(sliceInt)
 	fmt.Println(sliceInt)
 	//myServer()
@@ -156,33 +162,29 @@ func main() {
 
 	gg := &Galaxy{}
 	gg.ExtraFunc()
-	fmt.Println(gg.X,gg.Y)
+	fmt.Println(gg.X, gg.Y)
 
 	var pptr *Galaxy
 	pptr = gg
 	pptr.ExtraFunc()
-	fmt.Println(pptr.Y,pptr.X)
-
-	ra := new(Rocket)
-	time.AfterFunc(10 * time.Second, func() { ra.Launch(2) })
-
-	rocket := Rocket{}
-	receiver := Rocket.Launch
-	receiver(rocket,2)
-	AfterFunc(2,ra.Launch)//传入方法值
-	myintr := MyInterStruct{}
-	MyInterMethod(myintr)
+	fmt.Println(pptr.Y, pptr.X)
+	//
+	//ra := new(Rocket)
+	//time.AfterFunc(10 * time.Second, func() { ra.Launch(2) })
+	//
+	//rocket := Rocket{}
+	//receiver := Rocket.Launch
+	//receiver(rocket,2)
+	//AfterFunc(2,ra.Launch)//传入方法值
+	//myintr := MyInterStruct{}
+	//MyInterMethod(myintr)
 }
 
-
-
-
-func MyInterMethod(inter MyInter){
+func MyInterMethod(inter MyInter) {
 
 }
 
 type MyInterStruct struct {
-
 }
 
 func (m MyInterStruct) Sleep(a int) int {
@@ -190,35 +192,34 @@ func (m MyInterStruct) Sleep(a int) int {
 }
 
 type MyInter interface {
-	Sleep(a int)int
+	Sleep(a int) int
 }
 
-
-func AfterFunc(d int, f func(a int))  {
+func AfterFunc(d int, f func(a int)) {
 
 }
 
-type Rocket struct { /* ... */ }
+type Rocket struct { /* ... */
+}
+
 func (r *Rocket) Launch(a int) { /* ... */ }
 
-
-
 type Galaxy struct {
-	X,Y int
+	X, Y int
 }
 
-func (g Galaxy) ExtraMethod(a int) int{
+func (g Galaxy) ExtraMethod(a int) int {
 	fmt.Println("this is a extra method")
 	return 0
 }
 
-var myFuncVar func(int) (int ,int)
+var myFuncVar func(int) (int, int)
 
-func myFunc(a int)(int ,int ){
-	return 0,0
+func myFunc(a int) (int, int) {
+	return 0, 0
 }
 
-func (g *Galaxy)ExtraFunc(){
+func (g *Galaxy) ExtraFunc() {
 	g.X = 4
 	g.Y = 5
 }
@@ -230,30 +231,27 @@ type Humen struct {
 }
 
 type Point struct {
-
 }
 
 type People struct {
 	Humen
-	S int32
+	S     int32
 	point Point
-
 }
 
-func (h Humen) getHumenX(){
+func (h Humen) getHumenX() {
 	h.Y = 4
 	h.s = 6
 }
 
-func getNUmm(){
-	poe := People{Humen : Humen{1,2,2},S:22,point: Point{}}
+func getNUmm() {
+	poe := People{Humen: Humen{1, 2, 2}, S: 22, point: Point{}}
 	fmt.Println(poe.X)
 }
 
-
 func reversSlice(a []int) {
-	for i ,j:= 0,len(a) - 1; i < j; i,j = i + 1,j - 1 {
-		a[i],a[j] = a[j],a[i]
+	for i, j := 0, len(a)-1; i < j; i, j = i+1, j-1 {
+		a[i], a[j] = a[j], a[i]
 	}
 }
 
@@ -298,7 +296,7 @@ func rawReadFromfile(file *os.File) {
 	file.Read(sad)
 }
 
-func TimeNow(){
+func TimeNow() {
 	rand.Seed(time.Now().UTC().UnixNano())
 	//anim := gif.GIF{LoopCount: 12}
 }
@@ -309,7 +307,6 @@ const (
 	whiteIndex = 0 // first color in palette
 	blackIndex = 1 // next color in palette
 )
-
 
 func lissajous(out io.Writer) {
 	const (
@@ -339,28 +336,28 @@ func lissajous(out io.Writer) {
 	gif.EncodeAll(out, &anim) // NOTE: ignoring encoding errors
 }
 
-func getResFromNet(url string){
-	res,_	 := http.Get(url)
+func getResFromNet(url string) {
+	res, _ := http.Get(url)
 	if res != nil {
-		data,_ := ioutil.ReadAll(res.Body)
+		data, _ := ioutil.ReadAll(res.Body)
 		res.Body.Close()
 		fmt.Printf("%s", data)
-	}else{
+	} else {
 		os.Exit(1)
 	}
 
 }
 
-func pNums(mes string,ch chan <- string){
+func pNums(mes string, ch chan<- string) {
 	ch <- mes + "puffix"
 }
 
-func myServer(){
+func myServer() {
 	http.HandleFunc("/111/", HandleJsonFromClient)
 	http.ListenAndServe("localhost:8000", nil)
 }
 
-func HandlerFromClient(w http.ResponseWriter, r *http.Request){
+func HandlerFromClient(w http.ResponseWriter, r *http.Request) {
 	fmt.Fprintf(w, "%s %s %s\n", r.Method, r.URL, r.Proto)
 	for k, v := range r.Header {
 		fmt.Fprintf(w, "Header[%q] = %q\n", k, v)
@@ -375,8 +372,8 @@ func HandlerFromClient(w http.ResponseWriter, r *http.Request){
 	}
 }
 
-func HandleJsonFromClient(w http.ResponseWriter,r *http.Request){
-	items:=[]Issue{{Id: 1,Description: "1111"},{Id: 2,Description: "2222"}}
+func HandleJsonFromClient(w http.ResponseWriter, r *http.Request) {
+	items := []Issue{{Id: 1, Description: "1111"}, {Id: 2, Description: "2222"}}
 	res := IssueResult{
 		Item: &items,
 	}
@@ -387,10 +384,9 @@ type IssueResult struct {
 	Item *[]Issue
 }
 type Issue struct {
-	Id int32
+	Id          int32
 	Description string
 }
-
 
 type TempleteSelf struct {
 	Count int32
@@ -402,11 +398,12 @@ const templ = `{{.Count}} issues:
 Id: {{.Id}}
 Des:   {{.Description}}
 {{end}}`
+
 //模板
-func resTemplete(){
+func resTemplete() {
 	var report = template.Must(template.New("issuelist").
 		Parse(templ))
-	items:=[]Issue{{Id: 1,Description: "1111"},{Id: 2,Description: "2222"}}
+	items := []Issue{{Id: 1, Description: "1111"}, {Id: 2, Description: "2222"}}
 	res := TempleteSelf{
 		Count: 12,
 		Items: &items,
@@ -415,4 +412,3 @@ func resTemplete(){
 		log.Fatal(err)
 	}
 }
-
